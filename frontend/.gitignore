@@ -6,13 +6,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-src/assets/images/
-
+src/assets/
 node_modules
 dist
 dist-ssr
 *.local
-# src/assets/images/ *.png
+src/assets/images/
 
 # Editor directories and files
 .vscode/*
