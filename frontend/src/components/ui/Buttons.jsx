@@ -2,8 +2,10 @@ const colorVariant = {
   transparent: "text-black",
   primary: "bg-primary hover:bg-primary-40 text-white",
   danger: "bg-danger hover:bg-danger-60 text-white",
-  success: "bg-success hover:bg-success text-white",
+  secondary : "bg-black-10 text-primary hover:bg-primary hover:text-white",
+  success: "bg-success hover:bg-success-60 text-white",
   disabled: "bg-white-40 text-white-60",
+  
 };
 
 const defaultTransition = "transition duration-200";
@@ -27,7 +29,7 @@ export const Button = ({
       {!icon ? (
         <button
           onClick={handleClick}
-          className={` text-base font-FuturaMd  rounded-lg px-8 py-4 cursor-pointer ${colorVariant[color]} ${transition} ${sizeVariant[size]} ${className}`}
+          className={` text-base font-FuturaMd  rounded-lg  cursor-pointer ${colorVariant[color]} ${transition} ${sizeVariant[size]} ${className}`}
         >
           {value}
         </button>

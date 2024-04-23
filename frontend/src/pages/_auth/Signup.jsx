@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "../../components/ui/Buttons";
-import { Input } from "../../components/ui/Inputs";
+import { Input, SelectInput } from "../../components/ui/Inputs";
 import { houseImage2 } from "../../constants/images";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
@@ -25,6 +25,10 @@ const Signup = () => {
         [name]: type === "checkox" ? checked : value,
       };
     });
+  };
+
+  const handleSelectionChange = (selected) => {
+    setFormData((prevForm) => ({ ...prevForm, codePro: selected }));
   };
 
   const handleSubmit = async () => {
@@ -54,11 +58,13 @@ const Signup = () => {
   };
 
   return (
-    <section className="flex ms-6 justify-between">
-      <div className="flex mt-10 flex-col gap-10 justify-start">
-        <h1 className="text-primary text-title-1 w-full">Creer votre agence</h1>
+    <section className="flex justify-between">
+      <div className="flex mt-10 flex-col gap-10 items-center justify-start basis-1/2">
+        <h1 className="text-primary text-title-1 w-full text-center">
+          Creer votre agence
+        </h1>
         <form
-          className="flex flex-col gap-10 items-center justify-center w-fit mx-auto"
+          className="flex flex-col gap-10 items-center justify-center w-fit"
           onSubmit={(e) => e.preventDefault()}
         >
           <div className="flex flex-col items-center justify-center gap-6">
@@ -69,17 +75,20 @@ const Signup = () => {
               errorMsg="Le nom de l'agence ..."
               handleChange={handleInputChange}
             />
-            {/* <Input
-              title="Code province"
-              placeholder="Entrer le code du province"
-              name="codePro"
-              errorMsg="Le nom de l'agence ..."
-              handleChange={handleInputChange}
-            /> */}
-            <div className="flex items-start justify-start w-full flex-col gap-3">
+            {/* <div className="flex items-start justify-start w-full flex-col gap-3">
               <p className="text-base text-black">Code Province :</p>
-              <Dropdown color="input" className="w-full" />
-            </div>
+              <Dropdown
+                handleSelectionChange={handleSelectionChange}
+                color="input"
+                className="w-full"
+              />
+            </div> */}
+            <SelectInput
+              handleSelectionChange={handleSelectionChange}
+              color="input"
+              className="w-full"
+              size="lg"
+            />
             <Input
               type="password"
               title="Mot de passe"

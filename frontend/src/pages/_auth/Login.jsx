@@ -1,10 +1,10 @@
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/Buttons";
 import { Input } from "../../components/ui/Inputs";
-import { houseImage2 } from "../../constants/images";
-import axios from "axios";
 import { BASE_URL } from "../../constants";
-import { useNavigate } from "react-router-dom";
+import { houseImage2 } from "../../constants/images";
 axios.defaults.withCredentials = true;
 
 const Login = () => {
@@ -52,13 +52,13 @@ const Login = () => {
   };
 
   return (
-    <section className="flex ms-6 justify-between">
-      <div className="flex mt-10 flex-col gap-10 justify-start">
-        <h1 className="text-primary text-title-1 w-full">
+    <section className="flex  justify-between">
+      <div className="flex mt-10 flex-col gap-10 items-center basis-1/2 justify-start">
+        <h1 className="text-primary text-title-1 w-full text-center">
          Connecter vers votre agence
         </h1>
         <form
-          className="flex flex-col gap-10 items-center justify-center w-fit mx-auto"
+          className="flex flex-col gap-10 items-center justify-center w-fit "
           onSubmit={(e) => e.preventDefault()}
         >
           <div className="flex flex-col items-center justify-center gap-6">

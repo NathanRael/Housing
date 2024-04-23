@@ -47,7 +47,7 @@
 /*base here*/
 @layer base{
     .box {
-        @apply ps-16 pt-6 pb-4 w-full flex items-start justify-start flex-col gap-[64px]
+        @apply pt-6 pb-4 w-full flex items-start justify-start flex-col gap-[64px]
     }
 
     .bg-gradient-primary{
@@ -56,6 +56,10 @@
 
     .text-gradient-primary{
         @apply bg-gradient-to-r from-primary from-40% to-dark-primary bg-clip-text
+    }
+
+    .box-padding{
+        @apply ps-16 pe-6
     }
 
  

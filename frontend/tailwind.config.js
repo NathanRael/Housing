@@ -36,7 +36,7 @@ export default {
         'gray' : "#F2F2F2",
         'success' : '#48DA5F',
         'danger' : '#eb6161',
-        'warning' : '#F0E945',
+        'warning' : '#DE911E',
         'primary-60' : "#31189699",
         'primary-40' : "#31189666",
         'primary-10' : "#3118961a",

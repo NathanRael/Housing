@@ -1,6 +1,7 @@
 import { houseImage4 } from "../../constants/images";
 import Badge from "../ui/Badge";
 import { Button, ButtonIcon } from "../ui/Buttons";
+import StateBadge from "./StateBadge";
 
 const HouseCard = () => {
   return (
@@ -19,10 +20,7 @@ const HouseCard = () => {
           <Badge value="Fianarantsoa" />
         </div>
         <div className="flex items-center justify-between w-full">
-          <div className="flex items-center justify-center gap-2">
-            <div className="size-3 bg-success rounded-full"></div>
-            <span>Disponible</span>
-          </div>
+          <StateBadge color="bg-success" value="Disponible" />
           <div className="flex items-center justify-center gap-2">
             <ButtonIcon size="md" icon="bi-pencil-square" color="success" />
             <ButtonIcon size="md" icon="bi-trash" color="danger" />

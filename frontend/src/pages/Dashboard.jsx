@@ -35,7 +35,7 @@ const Dashboard = () => {
     setauthInfo(JSON.parse(sessionStorage?.getItem("agence_info")));
   }, []);
   return (
-    <section className="box">
+    <section className="box box-padding">
       <h1 className="flex items-center justify-center text-title-1 text-primary font-RobotoBold space-x-4">
         <i className="bi-ui-checks-grid text-[32px]"></i>
         <p>Tableau de bord</p>
