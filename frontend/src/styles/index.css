@@ -10,11 +10,8 @@
 }
 
 
-*:not(li > a, button > *){
-    transition: color 0.4s ease-in-out;
-}
 
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     width: 8px;
 }
 
@@ -22,197 +19,44 @@
     @apply bg-primary rounded-lg
 }
 
-#musicRange::-webkit-slider-thumb{
-    appearance: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    background-color: aliceblue;
-    /* border: solid 8px; */
-}
-
-.recentPost::-webkit-scrollbar{
-    width: 0;
-    height: 0;
-}
-
-
+ */
 
 
 @font-face {
-    font-family: 'Futura';
+    font-family: 'Roboto';
     src: url('../assets/fonts/Roboto-Regular.ttf');
 }
 @font-face {
-    font-family: 'FuturaMd';
+    font-family: 'RobotoMd';
     src: url('../assets/fonts/Roboto-Medium.ttf');
 }
 @font-face {
-    font-family: 'FuturaBold';
+    font-family: 'RobotoBold';
     src: url('../assets/fonts/Roboto-Bold.ttf');
 }
 @font-face {
-    font-family: 'FuturaLight';
+    font-family: 'RobotoLight';
     src: url('../assets/fonts/Roboto-Light.ttf');
 }
-/* @font-face {
-    font-family: 'Futura';
-    src: url('../assets/fonts/FuturaPTDemi.otf');
-}
-@font-face {
-    font-family: 'FuturaMd';
-    src: url('../assets/fonts/FuturaPTMedium.otf');
-}
-@font-face {
-    font-family: 'FuturaBold';
-    src: url('../assets/fonts/FuturaPTBold.otf');
-}
-@font-face {
-    font-family: 'FuturaLight';
-    src: url('../assets/fonts/FuturaPTLight.otf');
-} */
+
 
 @layer components{
     
 }
 
-
+/*base here*/
 @layer base{
-    .navLink{
-        @apply text-lead text-black hover:text-primary cursor-pointer transition duration-300 dark:text-white
+    .box {
+        @apply ps-16 pt-6 pb-4 w-full flex items-start justify-start flex-col gap-[64px]
     }
 
-    .btn-primary{
-        @apply text-black bg-primary dark:bg-white-60 
+    .bg-gradient-primary{
+        @apply bg-gradient-to-r from-primary from-40% to-dark-primary text-white 
     }
 
-    .btn-danger{
-        @apply bg-danger text-white dark:bg-danger-10 dark:text-danger
-    }
-    .btn-success{
-        @apply bg-primary-60 dark:bg-primary-40 text-white
+    .text-gradient-primary{
+        @apply bg-gradient-to-r from-primary from-40% to-dark-primary bg-clip-text
     }
 
-    .icon-white{
-        @apply dark:text-white text-black
-    }
-    .badge-black{
-        @apply  bg-black-10 text-black-60 dark:bg-white-40 dark:text-white-60 
-    }
-
-    .badge{
-        @apply text-small-2 font-FuturaThin p-2  rounded-full
-    }
-
-    .badge-primary{
-        @apply  bg-primary-40 dark:bg-primary-40 text-white
-    }
-
-    .input{
-        @apply px-6 py-3 text-base text-black-60 dark:text-white-60 rounded-md border-light dark:border-white-10 bg-black-10 dark:bg-white-10 placeholder:text-black-60 dark:placeholder:text-white-60 outline-none  focus:ring-primary focus:ring-2
-    }
-    .inputLg{
-        @apply px-8 py-4 text-base text-black-60 dark:text-white-60  rounded-md border-light dark:border-white-10 bg-black-10 dark:bg-white-10 placeholder:text-black-60 dark:placeholder:text-white-60 outline-none  focus:ring-primary focus:ring-2
-    }
-
-    .profile-container{
-        @apply bg-black p-6 flex flex-col  justify-between gap-10 w-full sm:w-[472px] absolute top-0 left-1/2 -translate-x-1/2
-    }
-
-    .line{
-        @apply border border-white-10 w-[50%] mx-auto
-    }
-
-
-    .active-link{
-        @apply text-primary
-    }
-
-    .box{
-        @apply px-16 max-md:px-4  transition duration-500 ease-out
-    }
-
-    .form-box{
-        @apply  flex items-center justify-center flex-col gap-8 px-16 max-md:px-4  transition duration-300 ease-out 
-    }
-
-    .loader{
-        @apply  before:bg-primary
-    }
-
-    .load-text{        
-        @apply before:bg-white p-4
-    }
-
-    .normal-transition{
-        @apply transition duration-75 ease-in-out
-    }
-
-    .icon-anim{
-        @apply transition duration-300 ease-out  hover:scale-[1.1]
-    }
-
-    .btn-anim{
-        @apply transition duration-300 ease-out hover:-translate-y-2 disabled:bg-black-40 dark:disabled:bg-white-40 hover:text-white hover:bg-primary    relative
-    }
-    .btn-anim-custom{
-        @apply transition duration-300 ease-out hover:-translate-y-2 hover:text-white hover:bg-danger relative
-    }
-
-    .card-anim{
-        @apply  transition duration-300 ease-out hover:-translate-y-2  hover:shadow-lg  
-    }
-
-
-    .play-anim{
-        @apply before:bg-primary-60
-    }
-    .icon-hide{
-       @apply max-md:opacity-0
-    }
-
-    .input-lg{
-        @apply text-white-60 px-8 py-4 rounded-lg bg-white-10 border-white-10 outline-none w-full  focus:ring-1 focus:ring-primary
-    }
-
-
-    .card-gradient{
-        @apply  before:bg-gradient-to-b before:from-black-10 before:from-10% before:to-black-40  before:to-40% 
-    }
-
-    .post-card-trans{
-        @apply transition duration-300 ease-out 
-    }
-
-    .line{
-        @apply  border-t-0 border-b-black-40 dark:border-b-white-10
-    }
-
-    .popup-link{
-        @apply  text-base w-full text-black px-4 py-2 rounded-lg dark:text-white hover:bg-black-10 dark:hover:bg-white-10
-    }
-
-    .page-anim{
-        @apply opacity-0 -translate-y-[3rem] 
-    }
-
-    .page-anim-left{
-        @apply opacity-0 -translate-x-[3rem] 
-    }
-    .page-anim-right{
-        @apply opacity-0 translate-x-[3rem] 
-    }
-
-    .app-box{
-        @apply transition duration-500 ease-out w-full px-2  pb-8 
-    }
-
-    .body-trans{
-        @apply transition duration-500
-    }
-
-    .before-line{
-        @apply before:bg-white before:absolute before:w-[30%] before:h-1  before:bottom-0
-    }
  
 }

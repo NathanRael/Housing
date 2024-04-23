@@ -1,10 +1,13 @@
+import { Outlet } from "react-router-dom";
+import SideBar from "../components/pages/SideBar";
+
 const AppLayout = () => {
   return (
-    <div className="flex w-full items-start justify-start">
-      <div className="bg-black basis-[280px] w-full h-screen text-white">
-        Sidebar
+    <div className="flex w-full items-start justify-start pe-6 relative">
+      <div className="bg-white basis-[340px] w-full h-screen text-white">
+        <SideBar/>
       </div>
-      <div className="bg-primary h-screen w-full">Outlet</div>
+      <Outlet/>
     </div>
   );
 };

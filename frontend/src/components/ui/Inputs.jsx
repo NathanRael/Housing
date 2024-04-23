@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { BtnIcon } from "./Buttons";
+import { ButtonIcon } from "./Buttons";
 
 const defaultInputWidth = "w-[320px] md:w-[380px]";
 
@@ -17,17 +17,16 @@ export const Input = ({
   className,
 }) => {
   const sizeVariant = {
-    md : "px-6 py-3",
-    lg : " px-8 py-4",
-
-  }
+    md: "px-6 py-3",
+    lg: " px-8 py-4",
+  };
   return (
     <div className={`flex  flex-col gap-2 ${defaultInputWidth} ${className}`}>
-      <p className="text-white">{title}</p>
+      <p className="text-black">{title} :</p>
       <input
         ref={inputRef}
         type={type}
-        className={`text-base text-white-60 rounded-md border-white-10 bg-white-10 placeholder:text-white-60 outline-none  focus:ring-primary focus:ring-2 ${sizeVariant[size]} `}
+        className={`text-base text-black-60 rounded-md border-black-10 bg-black-10 placeholder:text-black-60 outline-none  focus:ring-primary focus:ring-2 ${sizeVariant[size]} `}
         placeholder={placeholder}
         onChange={handleChange}
         name={name}
@@ -44,13 +43,12 @@ export const Input = ({
   );
 };
 
-
 export const FileInput = ({
   setSelectedFile,
   selectedFile,
   name,
   handleChange,
-  className
+  className,
 }) => {
   const fileRef = useRef(null);
 
@@ -81,8 +79,15 @@ export const FileInput = ({
   };
 
   return (
-    <div className={`flex items-center justify-between ${defaultInputWidth} ${className}`}>
-      <BtnIcon icon="bi bi-folder" size="lg" className="rounded-md" handleClick={() => handleClick(fileRef)} />
+    <div
+      className={`flex items-center justify-between ${defaultInputWidth} ${className}`}
+    >
+      <BtnIcon
+        icon="bi bi-folder"
+        size="lg"
+        className="rounded-md"
+        handleClick={() => handleClick(fileRef)}
+      />
       <div className="">
         <input
           ref={fileRef}
@@ -100,7 +105,7 @@ export const FileInput = ({
         </label>
       </div>
       <BtnIcon
-      size="md"
+        size="md"
         color="danger"
         icon="bi bi-trash"
         handleClick={() => removeFiles()}
