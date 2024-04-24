@@ -20,9 +20,10 @@ const SideBar = ({ className }) => {
           </div>
           <ButtonIcon size="lg" icon="bi-bell" color="transparent" />
         </div>
-        <ul className="w-full list-none space-y-6">
+        <ul  className="w-full list-none space-y-6">
           {NAVLINKS.map((item) => (
             <NavLink
+            key={item.name}
               item={item}
               active={
                 item.link.slice(1).toLocaleLowerCase() === pathname.slice(1)

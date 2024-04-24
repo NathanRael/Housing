@@ -4,8 +4,10 @@ import SearchBar from "../components/ui/SearchBar";
 import Dropdown from "../components/ui/Dropdown";
 import { HOUSING_AGENCY, HOUSING_PRICE, HOUSING_PROVINCE } from "../constants";
 import HouseCard from "../components/pages/HouseCard";
+import { useNavigate } from "react-router-dom";
 
 const Housing = () => {
+  const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState(null);
   return (
     <div className="box">
@@ -14,7 +16,7 @@ const Housing = () => {
           <i className="bi-houses text-[32px]"></i>
           <p>Logement</p>
         </h1>
-        <ButtonIcon size="md" icon="bi-plus-lg" />
+        <ButtonIcon handleClick={() => navigate('/housing/new')} size="md" icon="bi-plus-lg" />
       </div>
       <div className="box-padding border border-black-10  shadow-sm flex items-center justify-between w-full sticky top-0 z-20 backdrop-blur-sm bg-white py-4">
         <SearchBar

@@ -7,6 +7,8 @@ import Housing from "./pages/Housing";
 import Payement from "./pages/Payement";
 import Login from "./pages/_auth/Login";
 import Signup from "./pages/_auth/Signup";
+import ClientNew from "./pages/ClientNew";
+import HousingNew from "./pages/HousingNew";
 
 const App = () => {
   return (
@@ -14,7 +16,9 @@ const App = () => {
       <Route element={<AppLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/housing" element={<Housing />} />
+        <Route path="/housing/new" element={<HousingNew />} />
         <Route path="/client" element={<Client />} />
+        <Route path="/client/new" element={<ClientNew />} />
         <Route path="/agency" element={<Agency />} />
         <Route path="/payment" element={<Payement />} />
       </Route>

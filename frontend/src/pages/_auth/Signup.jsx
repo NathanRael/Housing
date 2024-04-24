@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../components/ui/Buttons";
 import { Input, SelectInput } from "../../components/ui/Inputs";
 import { houseImage2 } from "../../constants/images";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
 import { useNavigate } from "react-router-dom";
-import Dropdown from "../../components/ui/Dropdown";
 axios.defaults.withCredentials = true;
 
 const Signup = () => {
@@ -16,6 +15,7 @@ const Signup = () => {
     codePro: "",
     pwd: "",
   });
+  const [provinceOptions, setProvinceOptions] = useState([]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -27,13 +27,28 @@ const Signup = () => {
     });
   };
 
+  const getProvinceOptions = () => {
+    setLoading(true);
+    axios
+      .get(`${BASE_URL}/R_inscriptionAgence.php`)
+      .then((res) => {
+        setProvinceOptions(res.data);
+        console.log(res.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   const handleSelectionChange = (selected) => {
+    console.log(selected);
     setFormData((prevForm) => ({ ...prevForm, codePro: selected }));
   };
 
   const handleSubmit = async () => {
     setLoading(true);
     const { libAgt, codePro, pwd } = formData;
+    console.log(formData);
     axios
       .postForm(`${BASE_URL}/R_inscriptionAgence.php`, {
         libAgt,
@@ -41,22 +56,31 @@ const Signup = () => {
         pwd,
       })
       .then((res) => {
-        alert(res.data?.data?.message);
         console.log(res.data.data);
+        alert(res.data?.data?.message);
         sessionStorage.setItem("agence_info", JSON.stringify(res?.data?.data));
         setTimeout(() => {
           navigate("/dashboard");
         }, 1000);
       })
       .catch((e) => {
-        console.log(e);
-        alert(e);
+        console.log(e.response.data.data);
+        console.log(e?.response?.data?.data?.message);
+        alert("Erreur" + e);
       })
       .finally(() => {
         setLoading(false);
+        setFormData({
+          libAgt: "",
+          codePro: "",
+          pwd: "",
+        });
       });
   };
 
+  useEffect(() => {
+    getProvinceOptions();
+  }, []);
   return (
     <section className="flex justify-between">
       <div className="flex mt-10 flex-col gap-10 items-center justify-start basis-1/2">
@@ -74,16 +98,12 @@ const Signup = () => {
               name="libAgt"
               errorMsg="Le nom de l'agence ..."
               handleChange={handleInputChange}
+              value={formData.libAgt}
             />
-            {/* <div className="flex items-start justify-start w-full flex-col gap-3">
-              <p className="text-base text-black">Code Province :</p>
-              <Dropdown
-                handleSelectionChange={handleSelectionChange}
-                color="input"
-                className="w-full"
-              />
-            </div> */}
+
             <SelectInput
+              options={loading ? [{ option: "Loading ..." }] : provinceOptions}
+              title="Code province"
               handleSelectionChange={handleSelectionChange}
               color="input"
               className="w-full"
@@ -96,6 +116,7 @@ const Signup = () => {
               name="pwd"
               errorMsg="Le nom de l'agence ..."
               handleChange={handleInputChange}
+              value={formData.pwd}
             />
           </div>
           <Button

@@ -30,4 +30,4 @@ export const HOUSING_PRICE = ["Prix","100 000 - 200 000", "300 000 - 500 000", "
 export const HOUSING_PROVINCE= ["Province","Fianarantsoa", "Tananarive", "Toamasina"]
 export const HOUSING_AGENCY= ["Agence","Rael", "Rouall", "elazd"]
 
-export const BASE_URL = "http://192.168.93.244/logementbackgit" 
+export const BASE_URL = "http://192.168.93.244/logementbackgit/backend" 

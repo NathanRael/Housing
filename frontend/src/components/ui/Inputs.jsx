@@ -44,7 +44,17 @@ export const Input = ({
 };
 
 export const SelectInput = ({
-  options = ["Gaming", "Anime", "Music"],
+  options = [
+    {
+      option: "Gaming",
+    },
+    {
+      option: "Select",
+    },
+    {
+      option: "Test",
+    },
+  ],
   className,
   icon = "bi bi-arrow-right",
   inversedIcon,
@@ -55,7 +65,9 @@ export const SelectInput = ({
   size = "md",
 }) => {
   const defaultTransition = "transition duration-200";
-  const [selectedItem, setSelectedItem] = useState(options[0] || "Selected");
+  const [selectedItem, setSelectedItem] = useState(
+    options[0]?.option || "Selectionner"
+  );
   const [opened, setOpened] = useState(false);
   const colorVariant = {
     primary: "bg-primary hover:bg-primary-60 text-white  ",
@@ -77,6 +89,9 @@ export const SelectInput = ({
       handleSelectionChange(selectedItem);
     }, [selectedItem]);
 
+  // useEffect(() => {
+  //   options.map((item) => console.log(item.option))
+  // }, []);
   return (
     <div className="flex items-start justify-start w-full flex-col gap-3">
       <p className="text-base text-black">{title} :</p>
@@ -96,7 +111,7 @@ export const SelectInput = ({
               }`}
             ></i>
           )}
-          <p>{selectedItem || "Selection"}</p>
+          <p>{selectedItem}</p>
           {!inversedIcon && (
             <i
               className={`${defaultTransition} ${icon} ${
@@ -114,16 +129,16 @@ export const SelectInput = ({
               : "-z-10 opacity-0 skew-x-[12deg]"
           }  ${defaultTransition}`}
         >
-          {options?.map((option) => (
+          {options?.map((item) => (
             <li
               onClick={() => {
-                setSelectedItem(option);
+                setSelectedItem(item?.option);
                 setOpened(false);
               }}
-              key={option}
+              key={item?.option}
               className={`w-full cursor-pointer hover:bg-primary-40 hover:ps-6 px-4 py-2 rounded-md ${defaultTransition} transition-all`}
             >
-              {option?.slice(0, 30)}
+              {item?.option?.slice(0, 30)}
             </li>
           ))}
         </ul>
@@ -171,7 +186,7 @@ export const FileInput = ({
     <div
       className={`flex items-center justify-between ${defaultInputWidth} ${className}`}
     >
-      <BtnIcon
+      <ButtonIcon
         icon="bi bi-folder"
         size="lg"
         className="rounded-md"
@@ -189,11 +204,11 @@ export const FileInput = ({
           }}
           name={name}
         />
-        <label htmlFor="" className=" text-white-40">
+        <label htmlFor="" className=" text-black-40">
           {selectedFile?.name?.substr(-20) || "Ajouter un photo"}
         </label>
       </div>
-      <BtnIcon
+      <ButtonIcon
         size="md"
         color="danger"
         icon="bi bi-trash"
